@@ -1,6 +1,7 @@
 let express = require('express');
 let app = express();
 let db = require("./db");
+require("dotenv").config();
 
 let bodyParser = require("body-parser");
 app.use(bodyParser.json());
@@ -12,6 +13,8 @@ let menuRoute = require("./routes/menuRoutes");
 app.use("/person",personRoute);
 app.use("/menuItem",menuRoute);
 
-app.listen(3000,() => {
+let port = process.env.PORT || 3000;
+
+app.listen(port,() => {
     console.log("Server is Activated");
 }); 
